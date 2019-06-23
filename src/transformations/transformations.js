@@ -63,12 +63,15 @@ const transformResult = (results) => {
 const transformPlaceResult = (results) => {
     const newPlacesResult = [];
     const places = results.Places
-    for(let onePlace of places) {
-        newPlacesResult.push({
-            placeName : onePlace.PlaceName,
-            placeId : onePlace.PlaceId.replace("-sky", "")
-        })
+    if(places.length>0) {
+        for(let onePlace of places) {
+            newPlacesResult.push({
+                placeName : onePlace.PlaceName,
+                placeId : onePlace.PlaceId.replace("-sky", "")
+            })
+        }
     }
+    
     return newPlacesResult;
 }
 

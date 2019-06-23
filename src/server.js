@@ -18,10 +18,8 @@ app.get('/', (req, res) => {
 });
 
 /**
-  Simple flight search api wrapper.
-  Client should provide params.
-  API params and location values are here:
-  http://business.skyscanner.net/portal/en-GB/Documentation/FlightsLivePricingQuickStart
+  Simple flight search api wrapper. Client should provide params.
+  API params and location values are here: http://business.skyscanner.net/portal/en-GB/Documentation/FlightsLivePricingQuickStart
 */
 app.get('/api/search', async (req, res) => {
   try {
@@ -50,13 +48,14 @@ app.get('/places', async(req, res) => {
     const newResult = transformations.transformPlaceResult(results)
     res.json(newResult);
   } catch(error) {
-    console.log(error)
+    res.status(500).send(err);
+    console.error(err);
   }
 });
 
 
 app.listen(port, () => {
-  console.log('Node server listening on http://localhost:4000');
+  console.log('Node server listening on port'+port);
 });
 
 
